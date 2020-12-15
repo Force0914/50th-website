@@ -1,0 +1,175 @@
+*{
+    font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+    user-select: none;
+    text-shadow: none !important;
+    outline: none !important;
+}
+
+body.a{
+    display: flex;
+    background:#F5F5F7;
+    justify-content: center;
+	align-items: center;
+    height: 100vh;
+}
+
+body.b{
+    background:#F5F5F7;
+}
+
+.box{
+    font-size: larger;
+    border-radius: 9%;
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0,0.7);
+    padding: 30px;
+    border-radius: 15px;
+    background: #F2F2F2;
+}
+
+label{
+    text-align: left;
+}
+
+.c{
+    background: #F2F2F2;
+}
+
+input{
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+input[type="submit"]{
+    border-radius: 200px;
+    border: 1px solid #333;
+    background: rgb(255, 255, 255,0.7);
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.betterbtn{
+    border-radius: 200px;
+    border: 1px solid #333;
+    background: rgb(255, 255, 255,0.7);
+}
+
+.navbar{
+    position: fixed;
+    right: 0; 
+    left: 0; 
+    top: 0; 
+    z-index: 1000;
+    box-shadow: 0;
+}
+
+.navbar .brand{
+    color:#333;
+}
+
+.navbar .nav>li>a{
+    color: rgba(0, 0, 0, 0.7);
+    opacity: .87;
+}
+
+.navbar .nav>li>a:hover{
+    color: rgba(0, 0, 0);
+    border-radius: 0%;
+    background: 0;
+}
+
+.navbar-inner{
+    justify-content: center;
+	align-items: center;
+    background: rgba(255,255,255,0.72);
+    box-shadow: 0 0 0.px;
+    backdrop-filter: saturate(180%) blur(20px);
+    min-height: 45px;
+    padding-top: 5px;
+    border-radius: 0;
+}
+
+.btn{
+    background: rgba(229,229,234);
+}
+
+.btn-primary{
+    background: rgba(10,132,255);
+}
+
+.btn-danger{
+    background: rgba(255,69,48);
+}
+
+.btn-warning{
+    background: rgba(255,159,10);
+}
+
+.navbar .btn-navbar{
+    background: 0;
+    border-radius: 0px;
+    border: 0px;
+}
+
+.navbar .btn-navbar:hover{
+    background: 0;
+}
+
+.navbar .btn-navbar .icon-bar{
+    background: #777;
+    height: 3px;
+}
+
+.txt-left{
+    text-align: left;
+}
+
+.txt-right{
+    text-align: right;
+}
+
+.label{
+    text-align: right;
+}
+
+.label-success{
+    background: rgba(52,199,89);
+    padding: 3px;
+}
+
+.label-important{
+    background: rgba(255,69,48);
+    padding: 3px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+::-webkit-scrollbar-track {
+    background: rgb(209,209,214);
+}
+  
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 3px rgb(209,209,214) solid; 
+}
+
+.del{
+    float: none;
+    margin-left: 10px;
+}
+
+.long{
+    height: 155px;
+    overflow: auto;
+    border: silver;
+    border-style: solid;
+    padding: 5px;
+    padding-right: 0;
+    padding-left: 10px;
+    font-size: 1px;
+}
