@@ -18,7 +18,6 @@
     $prow = mysqli_fetch_assoc($presult);
     $groupid = $prow['groupid'];
     $projectname = $prow['name'];
-    $state = $prow['state'];
     }else{
         $_SESSION['msg'] = "你無權訪問此頁";
         header("Location:user.php");
@@ -68,7 +67,8 @@
 <div class="container txt-center">
     <h2>執行方案管理</h2>
     <h3>專案名稱：<?php echo $projectname;?></h3>
-    <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a><br><br>
+    <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a>
+    <a class="btn btn-primary" href="autocreataction.php?id=<?php echo $proid;?>">自動產生執行方案</a><br><br>
     <div class="c">
         <table class="table">
             <thead>
