@@ -65,7 +65,7 @@
 <body class="b">
 <?php include('navbar.php');?>
 <div class="container txt-center">
-    <h2>執行方案管理</h2>
+    <h2><i class="icon-camera">456789</i>執行方案管理</h2>
     <h3>專案名稱：<?php echo $projectname;?></h3>
     <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a>
     <a class="btn btn-primary" href="autocreataction.php?id=<?php echo $proid;?>">自動產生執行方案</a><br><br>

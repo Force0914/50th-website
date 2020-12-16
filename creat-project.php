@@ -21,7 +21,9 @@ foreach ($teamuser as $teamrow) {
 }
 foreach ($facename as $key => $facenamerow) {
     $facedesrow = $facedes[$key];
-    mysqli_query($sql,"INSERT INTO `face`(`proid`,`name`,`des`,`state`) VALUES ($proid,'$facenamerow','$facedesrow','true');");
+    if($facenamerow != "" && $facedesrow != ""){
+        mysqli_query($sql,"INSERT INTO `face`(`proid`,`name`,`des`,`state`) VALUES ($proid,'$facenamerow','$facedesrow','true');");
+    }
 }
 $_SESSION['msg'] = "成功新增專案:$projectname";
 header("Location:project.php");
