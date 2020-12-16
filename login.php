@@ -10,6 +10,7 @@ function v($a){
 
 function to($b){
     header("Location:$b"); //重導向到 $b 網頁
+    exit(); //結束
 }
 
 session_start(); //呼叫session
@@ -29,14 +30,11 @@ $ckpass = mysqli_query($sql, "SELECT * FROM user WHERE account='$username' AND p
         }else{
             to("user.php"); //不是管理員，導向使用者介面
         }
-        exit();
     }else{
         $_SESSION['msg'] = "帳號密碼錯誤";
         to("index.php"); //帳號密碼錯誤，重導向登入介面
-        exit();
     }
  }else{
         $_SESSION['msg'] = "帳號密碼錯誤";
         to("index.php"); //帳號不存在，一樣重導向至登入介面
-        exit();
  }
