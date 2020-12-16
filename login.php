@@ -1,5 +1,5 @@
- <?php
-$sql = @mysqli_connect("127.0.0.1","admin","1234","test"); //SQL連接
+<?php
+$sql = mysqli_connect("127.0.0.1","admin","1234","test"); //SQL連接
 
 function v($a){
    $a = trim($a);//移除空白字符
