@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
+$sql = mysqli_connect("127.0.0.1","admin","1234","test");
+$result = mysqli_query($sql,"");
 ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
@@ -19,11 +21,11 @@ if (!isset($_SESSION['username'])) {
             <div class="span3">
                 <input type="hidden" name="id" value="<?php echo $id;?>">
                 <label for="actionnum">編號:</label>
-                <input type="text" name="actionnum" id="actionnum" value="<?php echo ?>"><br>
+                <input type="text" name="actionnum" id="actionnum" value="<?php echo $ ;?>"><br>
                 <label for="actionname">執行方案名稱:</label>
-                <input type="text" name="actionname" id="actionname" value="<?php echo ?>"><br>
+                <input type="text" name="actionname" id="actionname" value="<?php echo $ ;?>"><br>
                 <label for="actiondes">執行方案說明:</label>
-                <input type="text" name="actiondes" id="actiondes" value="<?php echo ?>"><br>
+                <input type="text" name="actiondes" id="actiondes" value="<?php echo $ ;?>"><br>
             </div>
             <div class="span3">
                 <label>選取兩個面向:</label>
