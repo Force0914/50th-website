@@ -54,7 +54,8 @@
     if (!$admin) {
         $_SESSION['msg'] = "你無權訪問此頁";
         header("Location:user.php");
-    }?>
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
 <head>
@@ -68,7 +69,7 @@
     <h2>執行方案管理</h2>
     <h3>專案名稱：<?php echo $projectname;?></h3>
     <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a>
-    <a class="btn btn-primary" href="javascript:autoAction()">自動產生執行方案</a><br><br>
+    <a class="btn btn-primary" href="javascript:console.log(autoAction())">自動產生執行方案</a><br><br>
     <div class="c">
         <table class="table">
             <thead>
@@ -82,14 +83,14 @@
             <?php echo $code;?>
         </table>
     </div>
-    <div id="disp">
+    <div id="test">
     </div>
 </div>
 </body>
 <script>
     function autoAction() {
          var array = [];
-            array.push(["A1", "A2"]);
+            array.push(["A1", "A2","A3"]);
             array.push(["B1", "B2"]);
             var result = [];
             function explore(now, prefix) {
@@ -103,11 +104,7 @@
                 if (next) array.push(next);
             }
             explore(array.shift(), "");
-            var html = [];
-            $.each(result, function (idx, val) {
-                html.push("<p>" + val + "</p>");
-            });
-            $("#disp").html(html.join(""));
+            return result
     }
 </script>
 </html>
