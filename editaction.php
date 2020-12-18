@@ -4,7 +4,7 @@ if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
 $sql = mysqli_connect("127.0.0.1","admin","1234","test");
-$result = mysqli_query($sql,"");
+$result = mysqli_query($sql,"SELECT * FROM");
 ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
