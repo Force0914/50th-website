@@ -84,4 +84,9 @@
     </div>
 </div>
 </body>
+<script>
+    function autoaction(id) {
+        
+    }
+</script>
 </html>
