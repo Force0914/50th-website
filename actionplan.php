@@ -68,7 +68,7 @@
     <h2>執行方案管理</h2>
     <h3>專案名稱：<?php echo $projectname;?></h3>
     <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a>
-    <a class="btn btn-primary" href="autocreataction.php?id=<?php echo $proid;?>">自動產生執行方案</a><br><br>
+    <a class="btn btn-primary" href="javascript:autoAction()">自動產生執行方案</a><br><br>
     <div class="c">
         <table class="table">
             <thead>
@@ -82,11 +82,32 @@
             <?php echo $code;?>
         </table>
     </div>
+    <div id="disp">
+    </div>
 </div>
 </body>
 <script>
-    function autoaction(id) {
-        
+    function autoAction() {
+         var array = [];
+            array.push(["A1", "A2"]);
+            array.push(["B1", "B2"]);
+            var result = [];
+            function explore(now, prefix) {
+                var next = array.shift();
+                for (var i = 0; i < now.length; i++) {
+                    if (next) 
+                        explore(next, prefix + now[i] + "/");
+                    else 
+                        result.push(prefix + now[i]);
+                }
+                if (next) array.push(next);
+            }
+            explore(array.shift(), "");
+            var html = [];
+            $.each(result, function (idx, val) {
+                html.push("<p>" + val + "</p>");
+            });
+            $("#disp").html(html.join(""));
     }
 </script>
 </html>
