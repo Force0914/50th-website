@@ -14,7 +14,8 @@ while ($facerow = mysqli_fetch_assoc($facesql)) {
     array_push($data,$result);
 }
 print_r($data);
-$ans = $now = array();
+$ans = array();
+$now = array();
 function explore($now,$prefix){
 $next = array_shift($data);
 for ($i=0; $i < count($now); $i++) { 
