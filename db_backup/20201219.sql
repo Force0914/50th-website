@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `action_plan` (
   PRIMARY KEY (`actionid`),
   KEY `proid` (`proid`),
   CONSTRAINT `action_plan_ibfk_1` FOREIGN KEY (`proid`) REFERENCES `project` (`proid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: face
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `face` (
   PRIMARY KEY (`faceid`),
   KEY `proid` (`proid`),
   CONSTRAINT `face_ibfk_1` FOREIGN KEY (`proid`) REFERENCES `project` (`proid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: opinion
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `des` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`proid`),
   KEY `groupid` (`groupid`)
-) ENGINE = InnoDB AUTO_INCREMENT = 25 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: score
@@ -136,11 +136,19 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 INSERT INTO
   `action_plan` (`actionid`, `proid`, `num`, `name`, `des`, `opinion`)
 VALUES
-  (1, 20, 'A01', 'Test1', 'TestAction', '37,39');
+  (56, 20, 'A001', '執行方案1', 'Opinion1,opinion1', '37,39');
 INSERT INTO
   `action_plan` (`actionid`, `proid`, `num`, `name`, `des`, `opinion`)
 VALUES
-  (6, 20, 'A02', '123', '456', '42,40');
+  (57, 20, 'A002', '執行方案2', 'Opinion1,opinion2', '37,40');
+INSERT INTO
+  `action_plan` (`actionid`, `proid`, `num`, `name`, `des`, `opinion`)
+VALUES
+  (58, 20, 'A003', '執行方案3', 'Opinion2,opinion1', '38,39');
+INSERT INTO
+  `action_plan` (`actionid`, `proid`, `num`, `name`, `des`, `opinion`)
+VALUES
+  (59, 20, 'A004', '執行方案4', 'Opinion2,opinion2', '38,40');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: face
@@ -271,32 +279,6 @@ VALUES
     '2020-11-22',
     ''
   );
-INSERT INTO
-  `opinion` (
-    `opid`,
-    `faceid`,
-    `userid`,
-    `num`,
-    `name`,
-    `des`,
-    `file`,
-    `filetype`,
-    `creattime`,
-    `opinion`
-  )
-VALUES
-  (
-    42,
-    32,
-    2,
-    '003',
-    'how to fuck',
-    'play gun',
-    '',
-    '',
-    '2020-12-16',
-    ''
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: project
@@ -323,10 +305,6 @@ INSERT INTO
   `score` (`scoreid`, `opid`, `userid`, `score`)
 VALUES
   (15, 37, 4, 1);
-INSERT INTO
-  `score` (`scoreid`, `opid`, `userid`, `score`)
-VALUES
-  (17, 42, 3, 5);
 INSERT INTO
   `score` (`scoreid`, `opid`, `userid`, `score`)
 VALUES
@@ -393,15 +371,11 @@ VALUES
 INSERT INTO
   `user_group` (`groupid`, `userid`, `pre`)
 VALUES
-  (2, 3, 'admin');
+  (2, 8, 'admin');
 INSERT INTO
   `user_group` (`groupid`, `userid`, `pre`)
 VALUES
-  (2, 4, 'user');
-INSERT INTO
-  `user_group` (`groupid`, `userid`, `pre`)
-VALUES
-  (2, 5, 'user');
+  (2, 6, 'user');
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
