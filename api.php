@@ -24,7 +24,6 @@ if($_GET['do'] == 'auto')
                 $des = $des. "," . $ans['name'];
             }
         }
-        // echo "INSERT INTO `action_plan`(`proid`, `num`, `name`, `des`, `opinion`) VALUES ($porid,'$num','$name','$des','$data')\n";
         mysqli_query($sql,"INSERT INTO `action_plan`(`proid`, `num`, `name`, `des`, `opinion`) VALUES ($porid,'$num','$name','$des','$data')");
     }
 }

@@ -42,7 +42,7 @@ if (!isset($_SESSION['username'])) {
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                  while ($row = $result->fetch_assoc()) {
-                                        echo "<tr><td>" . $row["name"] . "</td><td>" . '<a href=discuss.php?id=' . $row["proid"] .' class="btn btn-primary">進入討論</a>'. "</td></tr>";
+                                        echo "<tr><td>" . $row["name"] . "</td><td>" . '<a href=discuss.php?id=' . $row["proid"] .' class="btn btn-primary">進入討論</a>'. "  " . '<a href=useraction.php?id=' . $row["proid"] .' class="btn btn-primary">進入執行方案</a>'. "</td></tr>";
                                 }
                             } else {
                                  return;
@@ -54,7 +54,7 @@ if (!isset($_SESSION['username'])) {
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                  while ($row = $result->fetch_assoc()) {
-                                        echo "<tr><td>" . $row["name"] . "</td><td>" . '<a href=discuss.php?id=' . $row["proid"] .' class="btn btn-primary">進入討論</a>'. "</td></tr>";
+                                        echo "<tr><td>" . $row["name"] . "</td><td>" . '<a href=discuss.php?id=' . $row["proid"] .' class="btn btn-primary">進入討論</a>'. "  " . '<a href=useraction.php?id=' . $row["proid"] .' class="btn btn-primary">進入執行方案</a>'. "</td></tr>";
                                 }
                             } else {
                                  return;
