@@ -13,19 +13,20 @@ while ($facerow = mysqli_fetch_assoc($facesql)) {
     }
     array_push($data,$result);
 }
-print_r($data);
-$ans = array();
-$now = array();
-function explore($now,$prefix){
-$next = array_shift($data);
-for ($i=0; $i < count($now); $i++) { 
-    if ($next) {
-        explore($next,$prefix.$now[i]);
-    }else {
-        array_push($ans,$prefix.$now[i]);
-    }
-}
-if($next) array_push($data,$next);
-}
-explore(array_shift($data),"");
-print_r($ans);
+// print_r($data);
+// $ans = array();
+// function explore($now,$prefix){
+// $now = array();
+// global $data,$ans;
+// $next = array_map('array_shift',$data);
+// for ($i=0; $i < count($now); $i++) { 
+//     if ($next) {
+//         explore($next,$prefix.$now[$i]);
+//     }else {
+//         array_push($ans,$prefix.$now[$i]);
+//     }
+// }
+// if($next) array_push($data,$next);
+// }
+// explore(array_map('array_shift',$data),"");
+// print_r($ans);

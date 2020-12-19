@@ -55,6 +55,19 @@
         $_SESSION['msg'] = "你無權訪問此頁";
         header("Location:user.php");
     }
+    $projectid = $_GET['id'];
+    $facesql = mysqli_query($sql,"SELECT * FROM face WHERE proid= $projectid");
+    $data = array();
+    while ($facerow = mysqli_fetch_assoc($facesql)) {
+        $faceid = $facerow['faceid'];
+        $result = array();
+        $opinionsql = mysqli_query($sql,"SELECT * FROM opinion WHERE faceid = $faceid");
+        while ($opinionrow = mysqli_fetch_assoc($opinionsql)) {
+            $opinionid = $opinionrow['opid'];
+            array_push($result,$opinionid);
+        }
+        array_push($data,$result);
+    }
     ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
@@ -69,7 +82,7 @@
     <h2>執行方案管理</h2>
     <h3>專案名稱：<?php echo $projectname;?></h3>
     <a class="btn btn-primary" href="creataction.php?id=<?php echo $proid;?>">新增</a>
-    <a class="btn btn-primary" href="javascript:console.log(autoAction())">自動產生執行方案</a><br><br>
+    <a class="btn btn-primary" href="javascript:autoAction()">自動產生執行方案</a><br><br>
     <div class="c">
         <table class="table">
             <thead>
@@ -89,22 +102,35 @@
 </body>
 <script>
     function autoAction() {
-         var array = [];
-            array.push(["A1", "A2","A3"]);
-            array.push(["B1", "B2"]);
+         var array = <?=json_encode($data)?>;
+         var proid = <?=$_GET['id']?>;
             var result = [];
             function explore(now, prefix) {
                 var next = array.shift();
                 for (var i = 0; i < now.length; i++) {
                     if (next) 
-                        explore(next, prefix + now[i] + "/");
+                        explore(next, prefix + now[i] + ",");
                     else 
                         result.push(prefix + now[i]);
                 }
                 if (next) array.push(next);
             }
             explore(array.shift(), "");
-            return result
+            return aj(proid,result);
+    }
+    function aj(proid,res)
+    {
+        $.ajax({
+            type:'post',
+            url:'api.php?do=auto',
+            data:{
+                'data' : res,
+                'proid' : proid
+            },
+            success:(a)=>{
+                console.log(a);
+            }
+        })
     }
 </script>
 </html>
