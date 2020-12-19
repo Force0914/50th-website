@@ -30,7 +30,7 @@ $sql = mysqli_connect("127.0.0.1","admin","1234","test");
                     <?php
                         $result = mysqli_query($sql,"SELECT * FROM action_plan WHERE proid =$proid");
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr><td>".$row['num']."</td><td>".$row['name']."</td><td>".$row['des']."</td><td><a href='actionscore.php?id=".$row['actionid']."' class='btn btn-primary'>評分</a></td></tr>";
+                                echo "<tr><td>".$row['num']."</td><td>".$row['name']."</td><td>".$row['des']."</td><td><a href='action.php?id=".$row['actionid']."' class='btn btn-primary'>查看</a> <a href='actionscore.php?id=".$row['actionid']."' class='btn btn-primary'>評分</a></td></tr>";
                             }
                     ?>
                     </table>

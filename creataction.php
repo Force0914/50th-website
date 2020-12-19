@@ -12,7 +12,7 @@ $fresult = mysqli_query($sql,"SELECT * FROM face WHERE proid = $id");
 if (mysqli_num_rows($result) > 0){
     $code = "";
     while($frow = mysqli_fetch_assoc($fresult)){
-        $code = $code . "<label>".$frow['name']."</label><select name='opinion[]' id='opinion'>";
+        $code = $code . "<label>".$frow['name']."</label><select name='opinion[]' id='opinion'><option value='none'>不選擇</option>";
         $faceid = $frow['faceid'];
         $oresult = mysqli_query($sql,"SELECT * FROM opinion WHERE faceid = $faceid");
         if (mysqli_num_rows($result) > 0){
