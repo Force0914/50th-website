@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) > 0){
 </head>
 <body class="a">
 <div class="box">
-    <form action="creat-action.php" method="post">
+    <form action="edit-action.php" method="post">
         <h2>編輯執行方案</h2>
         <div class="row">
             <div class="span3">
