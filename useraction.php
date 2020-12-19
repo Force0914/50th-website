@@ -5,6 +5,9 @@ if (!isset($_SESSION['username'])) {
 }
 $proid = $_GET['id'];
 $sql = mysqli_connect("127.0.0.1","admin","1234","test");
+$projectsql = mysqli_query($sql,"SELECT * FROM project WHERE proid = $proid");
+$projectrow = mysqli_fetch_assoc($projectsql);
+$projectname = $projectrow['name'];
 ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
@@ -16,7 +19,8 @@ $sql = mysqli_connect("127.0.0.1","admin","1234","test");
 <?php include('navbar.php');?>
 <body class="b txt-center">
     <br>
-        <h1>執行方案</h1>
+        <h2>執行方案</h2>
+        <h3>專案名稱:<?=$projectname?></h3>
     <div class="container c ">
         <table class="table">
                     <thead>
