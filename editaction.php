@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0){
 <!DOCTYPE html>
 <html lang="zh_tw">
 <head>
-    <title>新增執行方案</title>
+    <title>編輯執行方案</title>
     <?php include("head.php");?>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -53,7 +53,8 @@ if (mysqli_num_rows($result) > 0){
         <h2>編輯執行方案</h2>
         <div class="row">
             <div class="span3">
-                <input type="hidden" name="id" value="<?=$id?>">
+                <input type="hidden" name="id" value="<?=$actionid?>">
+                <input type="hidden" name="proid" value="<?=$proid?>">
                 <label for="actionnum">編號:</label>
                 <input type="text" name="actionnum" id="actionnum" value="<?=$actionnum?>"><br>
                 <label for="actionname">執行方案名稱:</label>

@@ -5,8 +5,8 @@ $actionnum = $_POST['actionnum'];
 $actionname = $_POST['actionname'];
 $actiondes = $_POST['actiondes'];
 $opinion = implode(",",$_POST['opinion']);
-if(sizeof($_POST['opinion']) != 2){
-$_SESSION['msg'] = "請選擇兩個意見，不可多也不可少";
+if(sizeof($_POST['opinion']) <= 0){
+$_SESSION['msg'] = "請選擇意見";
 header("Location:creataction.php");
 }
 $sql = mysqli_connect("127.0.0.1","admin","1234","test");
