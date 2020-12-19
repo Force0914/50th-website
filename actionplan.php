@@ -129,6 +129,7 @@
             },
             success:(a)=>{
                 console.log(a);
+                history.go(0);
             }
         })
     }
