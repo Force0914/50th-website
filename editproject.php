@@ -75,7 +75,7 @@ while ($facerow = $face->fetch_assoc()) {
                                 $userid = $row['id'];
                                 $presql = mysqli_query($sql,"SELECT * FROM user_group WHERE groupid = $groupid AND userid=$userid");
                                 $prerow = mysqli_fetch_assoc($presql);
-                                if ($prerow['userid'] == $userid) {
+                                if (!is_null($prerow)) {
                                     ?><option value="<?php echo $row['id'];?>" selected><?php echo $row['username'];?></option><?php
                                 }else{
                                     ?><option value="<?php echo $row['id'];?>"><?php echo $row['username'];?></option><?php
