@@ -55,8 +55,7 @@
         $_SESSION['msg'] = "你無權訪問此頁";
         header("Location:user.php");
     }
-    $projectid = $_GET['id'];
-    $facesql = mysqli_query($sql,"SELECT * FROM face WHERE proid= $projectid");
+    $facesql = mysqli_query($sql,"SELECT * FROM face WHERE proid= $proid");
     $data = array();
     while ($facerow = mysqli_fetch_assoc($facesql)) {
         $faceid = $facerow['faceid'];
@@ -103,7 +102,7 @@
 <script>
     function autoAction() {
          var array = <?=json_encode($data)?>;
-         var proid = <?=$_GET['id']?>;
+         var proid = <?=$proid?>;
             var result = [];
             function explore(now, prefix) {
                 var next = array.shift();
@@ -116,7 +115,7 @@
                 if (next) array.push(next);
             }
             explore(array.shift(), "");
-            return aj(proid,result);
+            aj(proid,result);
     }
     function aj(proid,res)
     {
