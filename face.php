@@ -160,7 +160,7 @@ $sql = mysqli_query($conn, "SELECT * FROM project WHERE proid = $proid2");
                                     $username = $urow["username"];
                                  }
                             }
-                            $sql = @mysqli_connect("127.0.0.1","admin","1234","test");
+                            $sql = mysqli_connect("127.0.0.1","admin","1234","test");
                             $userid = $_SESSION['userid'];
                             $score =  $sql->query("SELECT count(score) FROM score WHERE opid = $opid AND userid = $userid");
                             $score2 = $score->fetch_assoc();
@@ -171,6 +171,10 @@ $sql = mysqli_query($conn, "SELECT * FROM project WHERE proid = $proid2");
                                 $code = "<a class='btn btn-warning' href='score.php?id=" . $frow["opid"] . "'>查看</a>";
                                 $code2 = "<span class='label label-success'>已評分</span>";
                             }      
+                            if ($_SESSION['type'] == "admin") {
+                                $code = "";
+                                $code2 = "";
+                            }
                             $AVG = $conn->query("SELECT AVG(score) FROM score WHERE opid = $opid");
                             $AVG2 = $AVG->fetch_assoc();
                             $count = $conn->query("SELECT count(score) FROM score WHERE opid = $opid");
