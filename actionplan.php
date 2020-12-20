@@ -57,16 +57,27 @@
     }
     $facesql = mysqli_query($sql,"SELECT * FROM face WHERE proid= $proid");
     $data = array();
+    $scorestate = true;
     while ($facerow = mysqli_fetch_assoc($facesql)) {
         $faceid = $facerow['faceid'];
         $result = array();
-        $opinionsql = mysqli_query($sql,"SELECT * FROM opinion WHERE faceid = $faceid");
-        while ($opinionrow = mysqli_fetch_assoc($opinionsql)) {
-            $opinionid = $opinionrow['opid'];
-            array_push($result,$opinionid);
+        // $opinionsql = mysqli_query($sql,"SELECT * FROM opinion WHERE faceid = $faceid");
+        $opinionsql = mysqli_query($sql,"SELECT * FROM opinion LEFT JOIN score ON opinion.opid = score.opid WHERE opinion.faceid = $faceid ORDER BY score DESC LIMIT 0,1");
+        while ($opinionrow = mysqli_fetch_assoc($opinionsql)) {  
+            if($scorestate)
+                {
+                    $opinionid = $opinionrow['opid'];
+                    if (is_numeric($opinionid)) {
+                            array_push($result,$opinionid);
+                    }else {
+                            echo $opinionid;
+                            $scorestate = false;
+                    }
+                }
         }
         array_push($data,$result);
     }
+    mysqli_query();
     ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
@@ -100,7 +111,15 @@
 </div>
 </body>
 <script>
+        <?php 
+            if ($scorestate) {
+                echo "var scorestate = true;";
+            }else {
+                echo "var scorestate = false;";
+            }
+        ?>
     function autoAction() {
+        if (scorestate) {
          var array = <?=json_encode($data)?>;
          var proid = <?=$proid?>;
             var result = [];
@@ -116,6 +135,9 @@
             }
             explore(array.shift(), "");
             aj(proid,result);
+        }else{
+            alert("尚未評分完成");
+        }
     }
     function aj(proid,res)
     {
