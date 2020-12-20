@@ -67,7 +67,16 @@
             if($scorestate)
                 {
                     $opinionid = $opinionrow['opid'];
-                    if (is_numeric($opinionid)) {
+                    $usergroupcountsql = mysqli_query($sql,"SELECT COUNT(*) FROM user_group WHERE groupid = $groupid");
+                    $usergroupcountrow = mysqli_fetch_assoc($usergroupcountsql);
+                    $usergroupcount = $usergroupcountrow['COUNT(*)'];
+                    $scorecountsql = mysqli_query($sql,"SELECT COUNT(*) FROM score WHERE opid = $opinionid");
+                    $scorecountrow = mysqli_fetch_assoc($scorecountsql);
+                    $scorecount = $scorecountrow['COUNT(*)'];
+                    if($usergroupcount != $scorecount){
+                        $scorestate = false;
+                    }
+                    if (is_numeric($opinionid) && $scorestate) {
                             array_push($result,$opinionid);
                     }else {
                             echo $opinionid;
@@ -77,7 +86,6 @@
         }
         array_push($data,$result);
     }
-    mysqli_query();
     ?>
 <!DOCTYPE html>
 <html lang="zh_tw">
