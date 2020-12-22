@@ -62,9 +62,7 @@
         $faceid = $facerow['faceid'];
         $result = array();
         $opinionsql = mysqli_query($sql,"SELECT opinion.*,score.score FROM opinion LEFT JOIN score ON opinion.opid = score.opid WHERE opinion.faceid = $faceid GROUP BY opinion.opid ORDER BY score DESC LIMIT 0,2");
-        while ($opinionrow = mysqli_fetch_assoc($opinionsql)) {  
-            if($scorestate)
-                {
+        while ($opinionrow = mysqli_fetch_assoc($opinionsql)) { 
                     $opinionid = $opinionrow['opid'];
                     $usergroupcountsql = mysqli_query($sql,"SELECT COUNT(*) FROM user_group WHERE groupid = $groupid");
                     $usergroupcountrow = mysqli_fetch_assoc($usergroupcountsql);
@@ -72,7 +70,16 @@
                     $scorecountsql = mysqli_query($sql,"SELECT COUNT(*) FROM score WHERE opid = $opinionid");
                     $scorecountrow = mysqli_fetch_assoc($scorecountsql);
                     $scorecount = $scorecountrow['COUNT(*)'];
+                    $opinioncountsql = mysqli_quert($sql,"SELECT COUNT(*) FROM opinion WHERE opid = $opinionid");
+                    $opinioncountrow = mysqli_fetch_assoc($opinioncountsql);
+                    $opinioncount = $opinioncountrow['COUNT(*)'];
+                    if($opinioncount == "0"){
+                        $scorestate = false;
+                    }
                     if($usergroupcount != $scorecount){
+                        $scorestate = false;
+                    }
+                    if ($scorecount == 0) {
                         $scorestate = false;
                     }
                     if (is_numeric($opinionid) && $scorestate) {
@@ -81,9 +88,11 @@
                             echo $opinionid;
                             $scorestate = false;
                     }
-                }
         }
         array_push($data,$result);
+        echo $usergroupcount;
+        echo $scorecount;
+        echo $opinioncount;
     }
     ?>
 <!DOCTYPE html>
