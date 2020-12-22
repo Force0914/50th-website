@@ -61,7 +61,7 @@
     while ($facerow = mysqli_fetch_assoc($facesql)) {
         $faceid = $facerow['faceid'];
         $result = array();
-        $opinionsql = mysqli_query($sql,"SELECT opinion.*,score.score FROM opinion LEFT JOIN score ON opinion.opid = score.opid WHERE opinion.faceid = $faceid ORDER BY score DESC");
+        $opinionsql = mysqli_query($sql,"SELECT opinion.*,score.score FROM opinion LEFT JOIN score ON opinion.opid = score.opid WHERE opinion.faceid = $faceid GROUP BY opinion.opid ORDER BY score DESC LIMIT 0,2");
         while ($opinionrow = mysqli_fetch_assoc($opinionsql)) {  
             if($scorestate)
                 {
