@@ -70,9 +70,12 @@
                     $scorecountsql = mysqli_query($sql,"SELECT COUNT(*) FROM score WHERE opid = $opinionid");
                     $scorecountrow = mysqli_fetch_assoc($scorecountsql);
                     $scorecount = $scorecountrow['COUNT(*)'];
-                    $opinioncountsql = mysqli_quert($sql,"SELECT COUNT(*) FROM opinion WHERE opid = $opinionid");
+                    $opinioncountsql = mysqli_query($sql,"SELECT COUNT(*) FROM opinion WHERE opid = $opinionid");
                     $opinioncountrow = mysqli_fetch_assoc($opinioncountsql);
                     $opinioncount = $opinioncountrow['COUNT(*)'];
+                    echo $usergroupcount;
+                    echo $scorecount;
+                    echo $opinioncount;
                     if($opinioncount == "0"){
                         $scorestate = false;
                     }
@@ -90,9 +93,6 @@
                     }
         }
         array_push($data,$result);
-        echo $usergroupcount;
-        echo $scorecount;
-        echo $opinioncount;
     }
     ?>
 <!DOCTYPE html>
@@ -165,9 +165,14 @@
                 'proid' : proid
             },
             success:(a)=>{
-                alert("產生成功");
-                console.log(a);
-                history.go(0);
+                if (a == "error") {
+                    alert("尚未評分完成");
+                    // console.log(a);
+                    history.go(0);
+                }else{
+                    alert("產生成功");
+                    history.go(0);
+                }
             }
         })
     }
