@@ -1,0 +1,19 @@
+.text-center{
+    text-align: center;
+}
+label{
+	font-size: 25px;
+}
+.login{
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    height: 100vh;
+}
+.box{
+	background: rgba(0,0,0,0.1);
+	padding:25px;
+	border-radius: 10px;
+	border: rgba(0,0,0,0.3);
+	border-style: inset;
+}
